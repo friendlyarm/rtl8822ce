@@ -95,6 +95,8 @@ CONFIG_RTW_UP_MAPPING_RULE = tos
 CONFIG_RTW_MBO = n
 CONFIG_WAKE_ON_BT = n
 CONFIG_RTW_NBI = n
+# disable virtual intf for openwrt 21.02
+CONFIG_RTW_VIRTUAL_INTF = n
 
 ########################## Android ###########################
 # CONFIG_RTW_ANDROID - 0: no Android, 4/5/6/7/8/9/10/11 : Android version
@@ -1364,6 +1366,10 @@ ifeq ($(CONFIG_SECURITY_MEM), y)
 EXTRA_CFLAGS += -DCONFIG_SECURITY_MEM
 EXTRA_CFLAGS += -DSECURITY_MEM_ADDR=$(CONFIG_SECURITY_MEM_ADDR)
 EXTRA_CFLAGS += -DSECURITY_MEM_SIZE=$(CONFIG_SECURITY_MEM_SIZE)
+endif
+
+ifeq ($(CONFIG_RTW_VIRTUAL_INTF), y)
+EXTRA_CFLAGS += -DRTW_VIRTUAL_INTF=1
 endif
 
 ifeq ($(CONFIG_PLATFORM_I386_PC), y)
