@@ -3538,13 +3538,13 @@ _adapter *rtw_drv_add_vir_if(_adapter *primary_padapter,
 	} else
 #endif
 	{
-	/*
-	* If the BIT1 is 0, the address is universally administered.
-	* If it is 1, the address is locally administered
-	*/
-	mac[0] |= BIT(1);
-	if (padapter->iface_id > IFACE_ID1)
-		mac[0] ^= ((padapter->iface_id)<<2);
+		/*
+		 * If the BIT1 is 0, the address is universally administered.
+		 * If it is 1, the address is locally administered
+		 */
+		mac[0] |= BIT(1);
+		if (padapter->iface_id >= IFACE_ID1)
+			mac[0] ^= ((padapter->iface_id)<<2);
 	}
 
 	_rtw_memcpy(adapter_mac_addr(padapter), mac, ETH_ALEN);
