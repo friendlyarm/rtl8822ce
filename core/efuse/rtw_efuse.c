@@ -973,7 +973,7 @@ void rtw_efuse_analyze(PADAPTER	padapter, u8 Type, u8 Fake)
 		_RTW_PRINT_SEL(RTW_DBGDUMP, "%02X%s"
 			, pEfuseHal->fakeEfuseInitMap[i]
 			, ((i + 1) % 16 == 0) ? "\n" : (((i + 1) % 8 == 0) ? "	  " : " ")
-		);
+			);
 	}
 	_RTW_PRINT_SEL(RTW_DBGDUMP, "\n");
 

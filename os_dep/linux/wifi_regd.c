@@ -15,6 +15,11 @@
 
 #include <drv_types.h>
 
+#if defined(CPTCFG_KERNEL_CODE)
+#undef LINUX_VERSION_CODE
+#define LINUX_VERSION_CODE CPTCFG_KERNEL_CODE
+#endif
+
 #ifdef CONFIG_IOCTL_CFG80211
 void rtw_chset_hook_os_channels(struct rf_ctl_t *rfctl)
 {
