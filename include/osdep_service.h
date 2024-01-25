@@ -553,7 +553,12 @@ __inline static void rtw_dump_stack(void)
 }
 
 #ifdef PLATFORM_LINUX
+#ifdef CONFIG_RTW_WARN_ON
 #define rtw_warn_on(condition) WARN_ON(condition)
+#else
+#define rtw_warn_on(condition) \
+	do { if (condition) RTW_WARN("%s:%d", __func__, __LINE__); } while (0)
+#endif
 #else
 #define rtw_warn_on(condition) do {} while (0)
 #endif
