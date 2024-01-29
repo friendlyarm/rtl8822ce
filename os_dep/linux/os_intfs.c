@@ -2716,6 +2716,7 @@ struct dvobj_priv *devobj_init(void)
 #if defined(CONFIG_PLATFORM_RTK129X) && defined(CONFIG_PCI_HCI)
 	_rtw_spinlock_init(&pdvobj->io_reg_lock);
 #endif
+	_rtw_spinlock_init(&pdvobj->irq_th_lock);
 #ifdef CONFIG_MBSSID_CAM
 	rtw_mbid_cam_init(pdvobj);
 #endif
